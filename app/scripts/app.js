@@ -70,6 +70,23 @@ angular.module('confusionApp', [])
 }])
 
 .controller('DishDetailController', ['$scope', function ($scope) {
+    function getDateAsString() {
+        return (new Date()).toISOString();
+    }
+    
+    function getCloneComment(comment) {
+        var result = {};
+        
+        for (var key in comment) {
+            result[key] = comment[key];
+        };
+        
+        // make rating Integer (there is need to sort by rating without mistakes)
+        result.rating = parseInt(result.rating);
+        
+        return result;
+    };
+    
     $scope.dish = {
         name: 'Uthapizza',
         image: 'images/uthapizza.png',
@@ -109,6 +126,35 @@ angular.module('confusionApp', [])
                 date: "2011-12-02T17:57:28.556094Z"
           }
         ]
+    };
+
+    $scope.newComment = {
+        rating: 5,
+        comment: "",
+        author: "",
+        date: getDateAsString()
+    };
+
+    $scope.isShow = function () {
+        return this.newComment.comment.trim() != "";
+    };
+
+    $scope.onChangeRating = function (value) {
+        this.newComment.rating = value;
+    };
+
+
+    $scope.sendComment = function () {        
+        this.newComment.date = getDateAsString();
+        console.log(this.newComment);
+        
+        this.dish.comments.push(getCloneComment(this.newComment));
+
+        this.newComment.rating = 5;
+        this.newComment.comment = "";
+        this.newComment.author = "";
+        
+        this.newCommentForm.$setPristine();
     };
 }])
 
