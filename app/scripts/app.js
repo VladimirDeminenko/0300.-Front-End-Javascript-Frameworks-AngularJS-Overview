@@ -127,6 +127,7 @@ angular.module('confusionApp', [])
           }
         ]
     };
+<<<<<<< HEAD
 
     $scope.newComment = {
         rating: 5,
@@ -155,6 +156,14 @@ angular.module('confusionApp', [])
         this.newComment.author = "";
         
         this.newCommentForm.$setPristine();
+=======
+    
+    $scope.newComment = {
+        rating: 7,
+        comment: "It's my beautiful comment!",
+        author: "Vladimir Deminenko",
+        date: Date.now()
+>>>>>>> origin/master
     };
 }])
 
