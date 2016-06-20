@@ -110,6 +110,13 @@ angular.module('confusionApp', [])
           }
         ]
     };
+    
+    $scope.newComment = {
+        rating: 7,
+        comment: "It's my beautiful comment!",
+        author: "Vladimir Deminenko",
+        date: Date.now()
+    };
 }])
 
 .controller('ContactController', ['$scope', function ($scope) {

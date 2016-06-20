@@ -58,10 +58,21 @@
               </blockquote>
             </div>
           </li>
+          
+          <li class="media" ng-show=true>
+            <div>
+              <blockquote>
+                {{newComment.rating}} Stars
+                <p>{{newComment.comment}}</p>
+                <footer>
+                  {{newComment.author}}, {{newComment.date | date: 'MMM. dd, yyyy HH:mm:ss'}}
+                </footer>
+              </blockquote>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
-  </div>
 
   <!-- build:js scripts/main.js -->
   <script src="../bower_components/angular/angular.min.js"></script>
