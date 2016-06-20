@@ -136,7 +136,9 @@ angular.module('confusionApp', [])
     };
 
     $scope.isShow = function () {
-        return this.newComment.comment.trim() != "";
+        var isCommentEmty = (typeof(this.newComment.comment) == "undefined") || (this.newComment.comment == "");
+      
+        return !isCommentEmty;
     };
 
     $scope.onChangeRating = function (value) {
