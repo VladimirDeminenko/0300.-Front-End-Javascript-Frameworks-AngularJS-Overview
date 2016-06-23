@@ -6,7 +6,7 @@ angular.module('confusionApp')
         $scope.tab = 1;
         $scope.filtText = '';
         $scope.dishes = menuFactory.getDishes();
-       
+
         $scope.select = function (setTab) {
             $scope.tab = setTab;
 
@@ -29,57 +29,57 @@ angular.module('confusionApp')
             return ($scope.showDetails = !$scope.showDetails);
         };
 }])
+    .controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function ($scope, $routeParams, menuFactory) {
+        var dish = menuFactory.getDish(parseInt($routeParams.id, 10));
+        $scope.dish = dish;
 
-.controller('DishDetailController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    function getDateAsString() {
-        return (new Date()).toISOString();
-    }
-    
-    function getCloneComment(comment) {
-        var result = {};
-        
-        for (var key in comment) {
-            result[key] = comment[key];
+        function getDateAsString() {
+            return (new Date()).toISOString();
+        }
+
+        function getCloneComment(comment) {
+            var result = {};
+
+            for (var key in comment) {
+                result[key] = comment[key];
+            };
+
+            // make rating Integer (there is need to sort by rating without mistakes)
+            result.rating = parseInt(result.rating);
+
+            return result;
         };
-        
-        // make rating Integer (there is need to sort by rating without mistakes)
-        result.rating = parseInt(result.rating);
-        
-        return result;
-    };
-    
-    $scope.dish = menuFactory.getDish(3);
 
-    $scope.newComment = {
-        rating: 5,
-        comment: "",
-        author: "",
-        date: getDateAsString()
-    };
+        $scope.newComment = {
+            rating: 5,
+            comment: "",
+            author: "",
+            date: getDateAsString()
+        };
 
-    $scope.isShow = function () {
-        var isCommentEmpty = (typeof(this.newComment.comment) == "undefined") || (this.newComment.comment == "");
-      
-        return !isCommentEmpty;
-    };
+        $scope.isShow = function () {
+            var isCommentEmpty = (typeof (this.newComment.comment) == "undefined") || (this.newComment.comment == "");
 
-    $scope.onChangeRating = function (value) {
-        this.newComment.rating = value;
-    };
+            return !isCommentEmpty;
+        };
+
+        $scope.onChangeRating = function (value) {
+            this.newComment.rating = value;
+        };
 
 
-    $scope.sendComment = function () {        
-        this.newComment.date = getDateAsString();
-        console.log(this.newComment);
-        
-        this.dish.comments.push(getCloneComment(this.newComment));
+        $scope.sendComment = function () {
+            this.newComment.date = getDateAsString();
+            console.log(this.newComment);
 
-        this.newComment.rating = 5;
-        this.newComment.comment = "";
-        this.newComment.author = "";
-        
-        this.newCommentForm.$setPristine();
-    };
+            this.dish.comments.push(getCloneComment(this.newComment));
+
+            this.newComment.rating = 5;
+            this.newComment.comment = "";
+            this.newComment.author = "";
+
+            this.newCommentForm.$setPristine();
+        };
 }])
 
 .controller('ContactController', ['$scope', function ($scope) {
