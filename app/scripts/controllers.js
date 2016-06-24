@@ -29,9 +29,19 @@ angular.module('confusionApp')
             return ($scope.showDetails = !$scope.showDetails);
         };
 }])
+<<<<<<< HEAD
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function ($scope, $stateParams, menuFactory) {
         var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
       
+=======
+<<<<<<< HEAD
+    .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function ($scope, $stateParams, menuFactory) {
+        var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
+=======
+    .controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function ($scope, $routeParams, menuFactory) {
+        var dish = menuFactory.getDish(parseInt($routeParams.id, 10));
+>>>>>>> 2c07618879e3353ae55866f10a2958fd83ac86a5
+>>>>>>> origin/master
         $scope.dish = dish;
 
         function getDateAsString() {
