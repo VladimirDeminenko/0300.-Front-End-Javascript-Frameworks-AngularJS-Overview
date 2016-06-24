@@ -1,9 +1,5 @@
 'use strict';
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
 angular.module('confusionApp', ['ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
