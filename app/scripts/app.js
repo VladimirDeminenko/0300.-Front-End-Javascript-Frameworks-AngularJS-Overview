@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 angular.module('confusionApp', ['ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -61,3 +62,26 @@ angular.module('confusionApp', ['ui.router'])
 
         $urlRouterProvider.otherwise('/');
     });
+=======
+angular.module('confusionApp', ['ngRoute'])
+    .config(function ($routeProvider) {
+        $routeProvider
+        // route for the contactus page
+            .when('/contactus', {
+                templateUrl: 'contactus.html',
+                controller: 'ContactController'
+            })
+            // route for the menu page
+            .when('/menu', {
+                templateUrl: 'menu.html',
+                controller: 'MenuController'
+            })
+            // route for the dish details page
+            .when('/menu/:id', {
+                templateUrl: 'dishdetail.html',
+                controller: 'DishDetailController'
+            })
+            .otherwise('/contactus');
+    })
+;
+>>>>>>> 2c07618879e3353ae55866f10a2958fd83ac86a5
