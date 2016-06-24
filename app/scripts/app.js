@@ -11,7 +11,7 @@ angular.module('confusionApp', ['ui.router'])
                         templateUrl: 'views/header.html'
                     },
                     'content': {
-                        template: '<h1>To be Completed</h1>',
+                        template: '<h1>Home Page To be Completed</h1>',
                         controller: 'IndexController'
                     },
                     'footer': {
@@ -24,7 +24,7 @@ angular.module('confusionApp', ['ui.router'])
                 url: 'aboutus',
                 views: {
                     'content@': {
-                        template: '<h1>To be Completed</h1>'
+                        template: '<h1>About Page To be Completed</h1>'
                     }
                 }
             })

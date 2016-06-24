@@ -44,13 +44,13 @@ angular.module('confusionApp')
 
             for (var key in comment) {
                 result[key] = comment[key];
-            };
+            }
 
             // make rating Integer (there is need to sort by rating without mistakes)
             result.rating = parseInt(result.rating);
 
             return result;
-        };
+        }
 
         $scope.newComment = {
             rating: 5,
@@ -60,7 +60,7 @@ angular.module('confusionApp')
         };
 
         $scope.isShow = function () {
-            var isCommentEmpty = (typeof (this.newComment.comment) == "undefined") || (this.newComment.comment == "");
+            var isCommentEmpty = (typeof (this.newComment.comment) === "undefined") || (this.newComment.comment === "");
 
             return !isCommentEmpty;
         };
@@ -113,7 +113,7 @@ angular.module('confusionApp')
         console.log($scope.feedback);
 
         if ($scope.feedback.agree &&
-            ($scope.feedback.mychannel == "")) {
+            ($scope.feedback.mychannel === "")) {
             $scope.invalidChannelSelection = true;
             console.log('incorrect');
         } else {
@@ -129,7 +129,7 @@ angular.module('confusionApp')
             $scope.feedback.mychannel = "";
             $scope.feedbackForm.$setPristine();
             console.log($scope.feedback);
-        };
+        }
     };
 }])
 
