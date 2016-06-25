@@ -62,11 +62,6 @@ gulp.task('copyfonts', ['clean'], function () {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
-gulp.task('copyviews', ['clean'], function () {
-  gulp.src('app/views/*.html')
-    .pipe(gulp.dest('./dist/views'));
-});
-
 // Watch
 gulp.task('watch', ['browser-sync'], function () {
   // Watch .js files
