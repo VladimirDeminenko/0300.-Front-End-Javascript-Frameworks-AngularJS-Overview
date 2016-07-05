@@ -198,15 +198,13 @@ angular.module('confusionApp')
     };
 
     // implement a function named getPromotion
-    // that returns a selected promotion.
+    // that returns a selected promotion.    
     this.getPromotion = function (index) {
         return promotions[index];
     };
 
-
 })
-
-.factory('corporateFactory', function () {
+.service('corporateFactory', function () {
 
     var corpfac = {};
 
