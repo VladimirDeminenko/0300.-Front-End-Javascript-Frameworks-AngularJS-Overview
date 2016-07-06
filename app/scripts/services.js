@@ -31,7 +31,7 @@ angular.module('confusionApp')
         };
 
     }])
-    .service('corporateFactory', function () {
+    .factory('corporateFactory', function () {
 
         var corpfac = {};
 
