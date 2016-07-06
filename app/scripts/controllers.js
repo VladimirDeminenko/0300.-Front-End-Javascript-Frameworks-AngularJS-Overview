@@ -101,30 +101,40 @@ angular.module('confusionApp')
             }])
 
 .controller('DishCommentController', ['$scope', function ($scope) {
+        function createComment() {
+            return {
+                rating: 5,
+                date: new Date().toISOString()
+            };
+        }
 
-        $scope.mycomment = {
-            rating: 5,
-            comment: "",
-            author: "",
-            date: ""
+        function getCloneComment(comment) {
+            var result = {};
+
+            for (var key in comment) {
+                result[key] = comment[key];
+            }
+
+            // make rating Integer (there is need to sort by rating without mistakes)
+            result.rating = parseInt(result.rating);
+
+            return result;
+        }
+
+        $scope.isShow = function () {
+            var isCommentEmpty = (typeof ($scope.mycomment.comment) === "undefined") || ($scope.mycomment.comment === "");
+
+            return !isCommentEmpty;
         };
 
         $scope.submitComment = function () {
-
-            $scope.mycomment.date = new Date().toISOString();
-            console.log($scope.mycomment);
-
-            $scope.dish.comments.push($scope.mycomment);
-
+            console.log(this.mycomment);
+            $scope.dish.comments.push(getCloneComment(this.mycomment));
+            $scope.mycomment = createComment();
             $scope.commentForm.$setPristine();
-
-            $scope.mycomment = {
-                rating: 5,
-                comment: "",
-                author: "",
-                date: ""
-            };
         };
+    
+        $scope.mycomment = createComment();
 }
 ])
 
