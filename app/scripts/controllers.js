@@ -116,19 +116,6 @@ angular.module('confusionApp')
         };
     }
 
-    function getCloneComment(comment) {
-        var result = {};
-
-        for (var key in comment) {
-            result[key] = comment[key];
-        }
-
-        // make rating Integer (there is need to sort by rating without mistakes)
-        result.rating = parseInt(result.rating);
-
-        return result;
-    }
-
     $scope.isShow = function () {
         var isCommentEmpty = (typeof ($scope.mycomment.comment) === "undefined") || ($scope.mycomment.comment === "");
 
