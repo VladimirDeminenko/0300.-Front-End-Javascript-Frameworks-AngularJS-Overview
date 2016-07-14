@@ -41,9 +41,9 @@ angular.module('confusionApp')
     }
     ])
 
-.controller('ContactController', ['$scope', function ($scope) {
+.controller('ContactController', ['$scope', '$rootScope', function ($scope, $rootScope) {
 
-    $scope.feedback = {
+    $rootScope.feedback = {
         mychannel: "",
         firstName: "",
         lastName: "",
@@ -64,7 +64,7 @@ angular.module('confusionApp')
 
         }])
 
-.controller('FeedbackController', ['$scope', 'feedbackFactory', function ($scope, feedbackFactory) {
+.controller('FeedbackController', ['$scope', '$rootScope', 'feedbackFactory', function ($scope, $rootScope, feedbackFactory) {
     
     $scope.feedbacks = feedbackFactory.getFeedbacks().query(
         function (response) {
@@ -75,16 +75,16 @@ angular.module('confusionApp')
         });
 
     $scope.sendFeedback = function () {
-        if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
+        if ($rootScope.feedback.agree && ($rootScope.feedback.mychannel === "")) {
             $scope.invalidChannelSelection = true;
             console.log('incorrect');
         } else {
-            console.log($scope.feedback);    
-            $scope.feedbacks.push($scope.feedback);
-            feedbackFactory.getFeedbacks().add($scope.feedback);
+            console.log($rootScope.feedback);    
+            $scope.feedbacks.push($rootScope.feedback);
+            feedbackFactory.getFeedbacks().add($rootScope.feedback);
 
             $scope.invalidChannelSelection = false;
-            $scope.feedback = {
+            $rootScope.feedback = {
                 mychannel: "",
                 firstName: "",
                 lastName: "",
