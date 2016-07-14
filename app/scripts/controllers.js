@@ -64,16 +64,25 @@ angular.module('confusionApp')
 
         }])
 
-.controller('FeedbackController', ['$scope', function ($scope) {
+.controller('FeedbackController', ['$scope', 'feedbackFactory', function ($scope, feedbackFactory) {
+    
+    $scope.feedbacks = feedbackFactory.getFeedbacks().query(
+        function (response) {
+            $scope.feedbacks = response;
+        },
+        function (response) {
+            $scope.message = "Error: " + response.status + " " + response.statusText;
+        });
 
     $scope.sendFeedback = function () {
-
-        console.log($scope.feedback);
-
         if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
             $scope.invalidChannelSelection = true;
             console.log('incorrect');
         } else {
+            console.log($scope.feedback);    
+            $scope.feedbacks.push($scope.feedback);
+            feedbackFactory.getFeedbacks().add($scope.feedback);
+
             $scope.invalidChannelSelection = false;
             $scope.feedback = {
                 mychannel: "",
@@ -82,12 +91,11 @@ angular.module('confusionApp')
                 agree: false,
                 email: ""
             };
-            $scope.feedback.mychannel = "";
+
             $scope.feedbackForm.$setPristine();
-            console.log($scope.feedback);
         }
     };
-        }])
+}])
 
 .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function ($scope, $stateParams, menuFactory) {
 
