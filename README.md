@@ -2,7 +2,7 @@
 
 Start app
 - cd json-server
-- json-server --watch db.json-server
+- json-server --watch db.json
 - open index.html in your web-browser
 
 or
