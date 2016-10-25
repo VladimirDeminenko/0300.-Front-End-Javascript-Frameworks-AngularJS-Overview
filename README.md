@@ -1,6 +1,11 @@
 # 0300.-Front-End-Javascript-Frameworks-AngularJS-Overview
 
 Start app
-1. cd json-server
-2. json-server --watch db.json-server
-3. open index.html in your web-browser
+- cd json-server
+- json-server --watch db.json-server
+- open index.html in your web-browser
+
+or
+
+[Con Fusion Restaurant ](http://vladimirdeminenko.github.io/conFusion/app/
+"Con Fusion Restaurant")
